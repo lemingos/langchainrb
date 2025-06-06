@@ -85,5 +85,9 @@ module Langchain::LLM
         parameters: params
       )
     end
+
+    def adapter
+      @adapter ||= self.class.name.gsub("LLM", "Assistant::LLM::Adapters").constantize.new
+    end
   end
 end
