@@ -22,7 +22,9 @@ module Langchain
     validate :model_config_requires_name
     
     def ask(message)
-      threads.new.messages.build(content: message, role: "user")
+      thread = threads.new
+      thread.messages.build(content: message, role: "user")
+      thread.chat
     end
 
     def llm
